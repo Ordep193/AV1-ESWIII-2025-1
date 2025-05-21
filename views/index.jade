@@ -1,0 +1,74 @@
+doctype html
+html
+  head
+    title Calculadora Simples
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: #f9f9f9;
+      }
+      input, button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 16px;
+      }
+      #resultado {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+      }
+  body
+    h1 Calculadora Simples
+
+    input(type="number", id="input1", placeholder="Digite o primeiro número")
+    input(type="number", id="input2", placeholder="Digite o segundo número")
+
+    button(id="btn-somar") Somar
+    button(id="btn-subtrair") Subtrair
+    button(id="btn-multiplicar") Multiplicar
+    button(id="btn-dividir") Dividir
+
+    div Resultado
+    div(id="resultado")
+
+    script.
+      const getInputValues = () => {
+        const val1 = parseFloat(document.getElementById('input1').value);
+        const val2 = parseFloat(document.getElementById('input2').value);
+        return [val1, val2];
+      };
+
+      const updateResult = (res) => {
+        document.getElementById('resultado').textContent = res;
+      };
+
+      document.getElementById('btn-somar').addEventListener('click', () => {
+        const [a, b] = getInputValues();
+        updateResult(a + b);
+      });
+
+      document.getElementById('btn-subtrair').addEventListener('click', () => {
+        const [a, b] = getInputValues();
+        updateResult(a - b);
+      });
+
+      document.getElementById('btn-multiplicar').addEventListener('click', () => {
+        const [a, b] = getInputValues();
+        updateResult(a * b);
+      });
+
+      document.getElementById('btn-dividir').addEventListener('click', () => {
+        const [a, b] = getInputValues();
+        if (b === 0) {
+          updateResult('Erro: divisão por zero');
+        } else {
+          updateResult(a / b);
+        }
+      });
