@@ -7,7 +7,7 @@ let page;
 
 // Scenario: Adicionar uma nova tarefa
 Given('que estou na página principal', async () => {
-  browser = await puppeteer.launch({ headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'] }); // pode ser false para ver o navegador - os outros argumentos são para funcionar o GitHub Actions
+  browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }); // pode ser false para ver o navegador - os outros argumentos são para funcionar o GitHub Actions
   page = await browser.newPage();
   await page.goto('http://localhost:3000'); // substitua pela URL correta da sua aplicação
   await new Promise(resolve => setTimeout(resolve, 3000)); // espera 3 segundos
